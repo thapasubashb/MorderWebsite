@@ -1,90 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stunning Aesthetic hello</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- Navbar -->
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          s
-          <li><a href="#contact">Details</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h1>Crafting Digital Elegance</h1>
-        <p>Transforming ideas into visually stunning digital experiences</p>
-        <button onclick="scrollToSection('services')">
-          Explore Our Services
-        </button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VisionAlgo | Learn DSA, Operating Systems & Computer Networks</title>
+
+  <meta name="description"
+    content="Master Data Structures & Algorithms, Operating Systems and Computer Networks through beautiful visualizations and structured roadmaps.">
+
+  <meta name="keywords"
+    content="DSA, Algorithms, Data Structures, Operating Systems, Computer Networks, Interview Preparation">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body>
+
+  <!-- Scroll Progress -->
+
+  <div class="scroll-progress"></div>
+
+  <!-- Navbar -->
+
+  <header>
+
+    <nav class="navbar">
+
+      <div class="logo">
+
+        <div class="logo-circle">
+
+          V
+
+        </div>
+
+        <span>VisionAlgo</span>
+
       </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services">
-      <h2>What We Do</h2>
-      <div class="services-container">
-        <div class="service-card">
-          <h3>Web Development</h3>
-          <p>Build beautiful, high-performance websites that engage users.</p>
-        </div>
-        <div class="service-card">
-          <h3>Mobile Apps</h3>
-          <p>Design and develop apps that feel seamless and intuitive.</p>
-        </div>
-        <div class="service-card">
-          <h3>Digital Marketing</h3>
-          <p>Reach the right audience with effective marketing strategies.</p>
-        </div>
+      <ul class="nav-links">
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#topics">Topics</a></li>
+
+        <li><a href="#roadmaps">Roadmaps</a></li>
+
+        <li><a href="#features">Features</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+      </ul>
+
+      <button class="nav-btn">
+
+        Start Learning
+
+      </button>
+
+      <div class="hamburger">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
       </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Us</h2>
-      <p>
-        We are a creative team committed to delivering world-class digital
-        solutions. Our goal is to enhance your brand and create a lasting
-        impression.
-      </p>
-    </section>
+    </nav>
 
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <form id="contactForm">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
+  </header>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
+  <!-- Hero -->
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
+  <section class="hero" id="home">
 
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+    <div class="hero-bg">
 
-    <footer>
-      <p>&copy; 2025 Stunning Digital. All rights reserved.</p>
-    </footer>
+      <div class="blob blob1"></div>
 
-    <script src="script.js"></script>
-  </body>
-</html>
+      <div class="blob blob2"></div>
+
+      <div class="blob blob3"></div>
+
+    </div>
+
+    <div class="container hero-container">
+
+      <div class="hero-left">
+
+        <span class="badge">
+
+          🚀 Interactive Learning Platform
+
+        </span>
+
+        <h1>
+
+          Master
+
+          <span>
+
+            DSA
+
+          </span>
+
+          Operating Systems &
+
+          Computer Networks
+
+        </h1>
+
+        <p>
+
+          Learn computer science concepts through stunning
+          visualizations, structured roadmaps, interview guides,
+          and interactive explanations.
+
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#topics" class="primary-btn">
+
+            Explore Topics
+
+          </a>
+
+          <a href="#roadmaps" class="secondary-btn">
+
+            View Roadmaps
+
+          </a>
+
+        </div>
+
+        <div class="search-box">
+
+          <input type="text" placeholder="Search Arrays, Graph, TCP, Deadlock...">
+
+          <button>
+
+            Search
+
+          </button>
+
+        </div>
+
+        <div class="hero-stats">
+
+          <div>
+
+            <h2>250+</h2>
+
+            <span>Topics</span>
+
+          </div>
+
+          <div>
+
+            <h2>60+</h2>
+
+            <span>Visualizations</span>
+
+          </div>
+
+          <div>
+
+            <h2>100%</h2>
+
+            <span>Free</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="hero-right">
+
+        <div class="hero-card">
+
+          <div class="terminal-header">
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+          </div>
+
+          <pre><code>
+Algorithm Visualizer
+
+Graph Traversal
+
+Queue = [A]
+
+Visit A
+
+↓
+
+Visit B
+
+↓
+
+Visit C
+
+↓
+
+Visit D
+
+Complexity
+
+Time : O(V + E)
+
+Space : O(V)
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Featured Learning -->
+
+  <section class="learning-paths">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>Learning Paths</span>
+
+        <h2>Choose Your Journey</h2>
+
+        <p>
+
+          Learn step by step from beginner to advanced.
+
+        </p>
+
+      </div>
+
+      <div class="path-grid">
+
+        <div class="path-card">
+
+          <i data-lucide="code-2"></i>
+
+          <h3>Data Structures</h3>
+
+          <p>
+
+            Arrays
+
+            Linked List
+
+            Stack
+
+            Queue
+
+            Trees
+
+            Graph
+
+            Heap
+
+            Hashing
+
+          </p>
+
+          <a href="#">Start →</a>
+
+        </div>
+
+        <div class="path-card">
+
+          <i data-lucide="cpu"></i>
+
+          <h3>Operating Systems</h3>
+
+          <p>
+
+            Processes
+
+            Scheduling
+
+            Threads
+
+            Memory
+
+            Deadlock
+
+            Paging
+
+            File Systems
+
+          </p>
+
+          <a href="#">Start →</a>
+
+        </div>
+
+        <div class="path-card">
+
+          <i data-lucide="network"></i>
+
+          <h3>Computer Networks</h3>
+
+          <p>
+
+            OSI
+
+            TCP/IP
+
+            DNS
+
+            Routing
+
+            HTTP
+
+            HTTPS
+
+            UDP
+
+            IP Addressing
+
+          </p>
+
+          <a href="#">Start →</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Topics -->
+
+  <section id="topics">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>Featured Topics</span>
+
+        <h2>Most Popular DSA Concepts</h2>
+
+      </div>
+
+      <div class="topic-grid">
+
+        <div class="topic-card">
+          <i data-lucide="database"></i>
+          <h3>Arrays</h3>
+          <p>Master searching, sorting and prefix sums.</p>
+        </div>
+
+        <div class="topic-card">
+          <i data-lucide="link"></i>
+          <h3>Linked List</h3>
+          <p>Singly, Doubly and Circular Linked Lists.</p>
+        </div>
+
+        <div class="topic-card">
+          <i data-lucide="layers"></i>
+          <h3>Stack</h3>
+          <p>Applications, Monotonic Stack and Problems.</p>
+        </div>
+
+        <div class="topic-card">
+          <i data-lucide="workflow"></i>
+          <h3>Queue</h3>
+          <p>Normal Queue, Circular Queue and Deque.</p>
+        </div>
+
+        <div class="topic-card">
+          <i data-lucide="git-branch"></i>
+          <h3>Trees</h3>
+          <p>Binary Trees, BST, AVL and Traversals.</p>
+        </div>
+
+        <div class="topic-card">
+          <i data-lucide="share-2"></i>
+          <h3>Graphs</h3>
+          <p>BFS, DFS, MST and Shortest Paths.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
