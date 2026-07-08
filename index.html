@@ -4,412 +4,209 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>VisionAlgo | Learn DSA, Operating Systems & Computer Networks</title>
-
   <meta name="description"
     content="Master Data Structures & Algorithms, Operating Systems and Computer Networks through beautiful visualizations and structured roadmaps.">
-
   <meta name="keywords"
     content="DSA, Algorithms, Data Structures, Operating Systems, Computer Networks, Interview Preparation">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 
   <script src="https://unpkg.com/lucide@latest"></script>
-
 </head>
 
 <body>
 
-  <!-- Scroll Progress -->
-
-  <div class="scroll-progress"></div>
-
-  <!-- Navbar -->
+  <div class="scroll-progress" id="progress-bar"></div>
 
   <header>
-
-    <nav class="navbar">
-
-      <div class="logo">
-
-        <div class="logo-circle">
-
-          V
-
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <div class="logo-circle">V</div>
+          <span>VisionAlgo</span>
         </div>
-
-        <span>VisionAlgo</span>
-
-      </div>
-
-      <ul class="nav-links">
-
-        <li><a href="#home">Home</a></li>
-
-        <li><a href="#topics">Topics</a></li>
-
-        <li><a href="#roadmaps">Roadmaps</a></li>
-
-        <li><a href="#features">Features</a></li>
-
-        <li><a href="#contact">Contact</a></li>
-
-      </ul>
-
-      <button class="nav-btn">
-
-        Start Learning
-
-      </button>
-
-      <div class="hamburger">
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-      </div>
-
-    </nav>
-
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#topics">Topics</a></li>
+          <li><a href="#roadmaps">Roadmaps</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-btn">Start Learning</button>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero -->
-
   <section class="hero" id="home">
-
     <div class="hero-bg">
-
       <div class="blob blob1"></div>
-
       <div class="blob blob2"></div>
-
       <div class="blob blob3"></div>
-
     </div>
-
     <div class="container hero-container">
-
       <div class="hero-left">
-
-        <span class="badge">
-
-          🚀 Interactive Learning Platform
-
-        </span>
-
-        <h1>
-
-          Master
-
-          <span>
-
-            DSA
-
-          </span>
-
-          Operating Systems &
-
-          Computer Networks
-
-        </h1>
-
-        <p>
-
-          Learn computer science concepts through stunning
-          visualizations, structured roadmaps, interview guides,
-          and interactive explanations.
-
-        </p>
+        <span class="badge">🚀 Interactive Learning Platform</span>
+        <h1>Master <span>DSA</span>, Operating Systems & Computer Networks</h1>
+        <p>Learn computer science concepts through stunning visualizations, structured roadmaps, interview guides, and
+          interactive explanations.</p>
 
         <div class="hero-buttons">
-
-          <a href="#topics" class="primary-btn">
-
-            Explore Topics
-
-          </a>
-
-          <a href="#roadmaps" class="secondary-btn">
-
-            View Roadmaps
-
-          </a>
-
+          <a href="#topics" class="primary-btn">Explore Topics</a>
+          <a href="#roadmaps" class="secondary-btn">View Roadmaps</a>
         </div>
 
         <div class="search-box">
-
           <input type="text" placeholder="Search Arrays, Graph, TCP, Deadlock...">
-
-          <button>
-
-            Search
-
-          </button>
-
+          <button>Search</button>
         </div>
 
         <div class="hero-stats">
-
           <div>
-
             <h2>250+</h2>
-
             <span>Topics</span>
-
           </div>
-
           <div>
-
             <h2>60+</h2>
-
             <span>Visualizations</span>
-
           </div>
-
           <div>
-
             <h2>100%</h2>
-
             <span>Free</span>
-
           </div>
-
         </div>
-
       </div>
 
       <div class="hero-right">
-
         <div class="hero-card">
-
           <div class="terminal-header">
-
             <span></span>
-
             <span></span>
-
             <span></span>
-
           </div>
-
-          <pre><code>
-Algorithm Visualizer
-
+          <pre><code>Algorithm Visualizer
 Graph Traversal
-
 Queue = [A]
 
-Visit A
+Visit A  ➔  Visit B  ➔  Visit C
 
-↓
-
-Visit B
-
-↓
-
-Visit C
-
-↓
-
-Visit D
-
-Complexity
-
-Time : O(V + E)
-
-Space : O(V)
-</code></pre>
-
+Complexity:
+• Time : O(V + E)
+• Space: O(V)</code></pre>
         </div>
-
       </div>
-
     </div>
-
   </section>
 
-  <!-- Featured Learning -->
-
-  <section class="learning-paths">
-
+  <section class="learning-paths" id="roadmaps">
     <div class="container">
-
       <div class="section-title">
-
         <span>Learning Paths</span>
-
         <h2>Choose Your Journey</h2>
-
-        <p>
-
-          Learn step by step from beginner to advanced.
-
-        </p>
-
+        <p>Learn step by step from fundamental configurations up to algorithmic mastery.</p>
       </div>
 
       <div class="path-grid">
-
         <div class="path-card">
-
           <i data-lucide="code-2"></i>
-
           <h3>Data Structures</h3>
-
-          <p>
-
-            Arrays
-
-            Linked List
-
-            Stack
-
-            Queue
-
-            Trees
-
-            Graph
-
-            Heap
-
-            Hashing
-
+          <p>• Arrays & Linked Lists
+            • Stacks & Queues
+            • Non-Linear Trees
+            • Graph Algorithms
+            • Heap Architectures
           </p>
-
-          <a href="#">Start →</a>
-
+          <a href="#">Start Learning <span>→</span></a>
         </div>
-
         <div class="path-card">
-
           <i data-lucide="cpu"></i>
-
           <h3>Operating Systems</h3>
-
-          <p>
-
-            Processes
-
-            Scheduling
-
-            Threads
-
-            Memory
-
-            Deadlock
-
-            Paging
-
-            File Systems
-
+          <p>• Concurrency & Processes
+            • CPU Scheduling Metrics
+            • Deadlock Avoidance
+            • Memory Management
+            • Virtual Paging Schemes
           </p>
-
-          <a href="#">Start →</a>
-
+          <a href="#">Start Learning <span>→</span></a>
         </div>
-
         <div class="path-card">
-
           <i data-lucide="network"></i>
-
           <h3>Computer Networks</h3>
-
-          <p>
-
-            OSI
-
-            TCP/IP
-
-            DNS
-
-            Routing
-
-            HTTP
-
-            HTTPS
-
-            UDP
-
-            IP Addressing
-
+          <p>• OSI Layer Frameworks
+            • TCP/IP Protocol Suite
+            • Routing Mechanisms
+            • Application Protocols
+            • DNS Resolution Systems
           </p>
-
-          <a href="#">Start →</a>
-
+          <a href="#">Start Learning <span>→</span></a>
         </div>
-
       </div>
-
     </div>
-
   </section>
 
-  <!-- Topics -->
-
   <section id="topics">
-
     <div class="container">
-
       <div class="section-title">
-
         <span>Featured Topics</span>
-
         <h2>Most Popular DSA Concepts</h2>
-
       </div>
 
       <div class="topic-grid">
-
         <div class="topic-card">
           <i data-lucide="database"></i>
           <h3>Arrays</h3>
-          <p>Master searching, sorting and prefix sums.</p>
+          <p>Master searching, multi-pointer sorting algorithms, and efficient prefix sum ranges.</p>
         </div>
-
         <div class="topic-card">
           <i data-lucide="link"></i>
           <h3>Linked List</h3>
-          <p>Singly, Doubly and Circular Linked Lists.</p>
+          <p>Traverse structural variations including Singly, Doubly, and Circular linked lists.</p>
         </div>
-
         <div class="topic-card">
           <i data-lucide="layers"></i>
           <h3>Stack</h3>
-          <p>Applications, Monotonic Stack and Problems.</p>
+          <p>Isolate structural functional tracking, monotonic limits, and expression parser tools.</p>
         </div>
-
         <div class="topic-card">
           <i data-lucide="workflow"></i>
           <h3>Queue</h3>
-          <p>Normal Queue, Circular Queue and Deque.</p>
+          <p>Configure FIFO sequences using basic arrays, Circular buffers, and Double-Ended Deques.</p>
         </div>
-
         <div class="topic-card">
           <i data-lucide="git-branch"></i>
           <h3>Trees</h3>
-          <p>Binary Trees, BST, AVL and Traversals.</p>
+          <p>Visualize fundamental Binary Trees, Search Trees (BST), AVL self-balancing and Traversals.</p>
         </div>
-
         <div class="topic-card">
           <i data-lucide="share-2"></i>
           <h3>Graphs</h3>
-          <p>BFS, DFS, MST and Shortest Paths.</p>
+          <p>Explore search configurations spanning BFS, DFS, MST variations, and Shortest Paths.</p>
         </div>
-
       </div>
-
     </div>
-
   </section>
+
+  <script>
+    // Initialize Lucide Vector Icons
+    lucide.createIcons();
+
+    // Scroll Progress Logic Engine
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+  </script>
+</body>
+
+</html>
