@@ -94,33 +94,47 @@ revealElements.forEach(element => {
 });
 
 // ===============================
-// Dynamic 3D Card Tilt Engine
+// Dynamic 3D Card Tilt Engine (FIXED)
 // ===============================
 const tiltCards = document.querySelectorAll(".dynamic-tilt");
 
 tiltCards.forEach(card => {
+    // Find the inner moving child element
+    const innerContent = card.querySelector(".card-depth-content");
+    if (!innerContent) return;
+
     card.addEventListener("mousemove", (e) => {
-        // Drop calculations if screen size belongs to tablet/mobile bounds
         if (window.innerWidth <= 1024) return;
 
         const cardRect = card.getBoundingClientRect();
         const cardWidth = cardRect.width;
         const cardHeight = cardRect.height;
         
-        // Calculate coordinate positions relative to central core of card element
+        // Coordinates accurately measured from the completely stable bounding container
         const mouseX = e.clientX - cardRect.left - cardWidth / 2;
         const mouseY = e.clientY - cardRect.top - cardHeight / 2;
         
-        // Normalize degrees rotation range caps (Max 15deg swing)
-        const angleX = -(mouseY / (cardHeight / 2)) * 15;
-        const angleY = (mouseX / (cardWidth / 2)) * 15;
+        // Moderate max swing values safely (Max 12 degrees tilt)
+        const angleX = -(mouseY / (cardHeight / 2)) * 12;
+        const angleY = (mouseX / (cardWidth / 2)) * 12;
         
-        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.04, 1.04, 1.04)`;
+        // Tilt the INNER content, keeping the main card shell securely fixed in grid space
+        innerContent.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02) translateZ(20px)`;
     });
 
     card.addEventListener("mouseleave", () => {
-        // Return element smoothly back to flat balance state configurations
-        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        // Smoothly drop back to exact flat balance specifications
+        if (innerContent) {
+            innerContent.style.transition = "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)";
+            innerContent.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateZ(0px)`;
+        }
+    });
+    
+    card.addEventListener("mouseenter", () => {
+        // Remove tracking transitions during mousemove for ultra-snappy feedback loops
+        if (innerContent) {
+            innerContent.style.transition = "transform 0.1s ease-out";
+        }
     });
 });
 
