@@ -517,97 +517,48 @@ section {
     max-width: 600px;
     margin: 0 auto;
 }
-
 /* ==========================================
-   3D CARDS & GRIDS REFACTOR
+   3D CARDS & GRIDS (FIXED MATRIX)
 ========================================== */
 .path-grid, .topic-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 35px;
-    transform-style: preserve-3d;
+    /* Forces layout engine to isolate physics from sibling elements */
+    transform-style: flat; 
 }
 
+/* Stable outer bounding box. This never scales or moves, preventing flickering */
 .path-card, .topic-card {
     background: var(--card);
     backdrop-filter: blur(12px);
-    padding: 40px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
-    transform-style: preserve-3d;
-    will-change: transform;
+    cursor: pointer;
+    perspective: 1000px; /* Gives local 3D workspace depth to the inner container */
     transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s;
 }
 
+/* Inner relative wrapper that safely handles the 3D visual extrusion */
 .card-depth-content {
+    padding: 40px; /* Moved padding here so the entire hit-box remains intact */
     transform-style: preserve-3d;
-    transform: translateZ(0px);
-    transition: transform 0.3s ease;
+    will-change: transform;
+    pointer-events: none; /* Stops inner elements from hijacking pointer triggers */
+    transition: transform 0.15s ease-out; /* Smoothly dampens mouse movements */
 }
 
-/* Glassmorphic inner extrusion effect on active hover matrix */
+/* Override padding adjustments seamlessly for topic cards */
+.topic-card .card-depth-content {
+    padding: 32px;
+}
+
+/* Stable Hover Glow Enhancements */
 .path-card:hover, .topic-card:hover {
     border-color: var(--border-hover);
     background: var(--card-hover);
     box-shadow: var(--shadow-card), var(--shadow-glow);
 }
-
-.path-card:hover .card-depth-content, 
-.topic-card:hover .card-depth-content {
-    transform: translateZ(40px); /* Pops content out toward the user */
-}
-
-.path-card svg, .topic-card svg {
-    width: 42px;
-    height: 42px;
-    stroke: #60a5fa;
-    stroke-width: 1.5;
-    margin-bottom: 24px;
-    filter: drop-shadow(0 5px 10px rgba(59, 130, 246, 0.3));
-}
-
-.path-card h3, .topic-card h3 {
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 14px;
-    letter-spacing: -0.5px;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.4);
-}
-
-.path-card p, .topic-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-}
-
-.path-card p {
-    margin-bottom: 28px;
-    white-space: pre-line;
-}
-
-.path-card a {
-    font-weight: 600;
-    color: var(--primary);
-    font-size: 0.95rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: gap 0.2s ease, transform 0.2s;
-}
-
-.path-card a:hover {
-    gap: 10px;
-    color: #60a5fa;
-    transform: translateZ(10px);
-}
-
-.topic-card {
-    padding: 32px;
-}
-.topic-card p {
-    margin-bottom: 0;
-}
-
 /* ==========================================
    RESPONSIVE LAYOUTS
 ========================================== */
