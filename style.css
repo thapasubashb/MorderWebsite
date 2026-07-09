@@ -9,8 +9,8 @@
 :root {
     --bg: #030712;
     --bg-gradient: linear-gradient(180deg, #030712 0%, #0b1528 50%, #030712 100%);
-    --card: rgba(17, 24, 39, 0.7);
-    --card-hover: rgba(23, 37, 84, 0.6);
+    --card: rgba(17, 24, 39, 0.55);
+    --card-hover: rgba(23, 37, 84, 0.7);
     
     --primary: #3b82f6;
     --secondary: #8b5cf6;
@@ -22,14 +22,15 @@
     --text-dim: #cbd5e1;
     
     --border: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(59, 130, 246, 0.4);
+    --border-hover: rgba(59, 130, 246, 0.5);
     
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-full: 9999px;
     
-    --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.15);
-    --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.25);
+    --shadow-card: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+    --shadow-3d: 1px 1px 0px #1e293b, 2px 2px 0px #1e293b, 3px 3px 0px #1e293b, 4px 4px 0px #1e293b, 5px 5px 15px rgba(0,0,0,0.6);
 }
 
 /* ==========================================
@@ -103,7 +104,7 @@ ul {
 }
 
 /* ==========================================
-   NAVBAR (Glassmorphism Upgrade)
+   NAVBAR (Glassmorphism)
 ========================================== */
 header {
     position: fixed;
@@ -137,7 +138,7 @@ header {
 .logo-circle {
     width: 42px;
     height: 42px;
-    border-radius: 12px; /* Sleeker squircle design */
+    border-radius: 12px;
     display: grid;
     place-items: center;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -382,16 +383,33 @@ header {
 }
 
 /* ==========================================
-   TERMINAL CARD
+   3D HERO SCENE ARCHITECTURE
 ========================================== */
+.hero-3d-scene {
+    perspective: 1200px;
+    perspective-origin: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .hero-card {
     background: var(--card);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
     border-radius: var(--radius-lg);
     padding: 28px;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: var(--shadow-card);
-    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(12deg) rotateY(-16deg) rotateZ(2deg);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease, border-color 0.5s;
+}
+
+/* Dynamic 3D extrusion logic on mouse focus */
+.hero-card:hover {
+    transform: rotateX(4deg) rotateY(-6deg) rotateZ(0deg) translate3d(0, -10px, 20px);
+    border-color: var(--border-hover);
+    box-shadow: 0 45px 80px -20px rgba(0, 0, 0, 0.8), var(--shadow-glow);
 }
 
 .hero-card::before {
@@ -400,7 +418,7 @@ header {
     inset: 0;
     border-radius: var(--radius-lg);
     padding: 1px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.01));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -412,6 +430,7 @@ header {
     display: flex;
     gap: 8px;
     margin-bottom: 20px;
+    transform: translateZ(30px); /* Extrudes header elements forward */
 }
 
 .terminal-header span {
@@ -430,6 +449,7 @@ header {
     line-height: 1.8;
     color: #e2e8f0;
     overflow: auto;
+    transform: translateZ(20px); /* Extrudes text layer forward */
 }
 
 /* ==========================================
@@ -450,8 +470,8 @@ header {
     animation: float 12s infinite ease-in-out;
 }
 
-.blob1 { width: 400px; height: 400px; background: #2563eb; left: -100px; top: 10%); }
-.blob2 { width: 500px; height: 500px; background: #7c3aed; right: -150px; top: 5%); animation-delay: -3s; }
+.blob1 { width: 400px; height: 400px; background: #2563eb; left: -100px; top: 10%; }
+.blob2 { width: 500px; height: 500px; background: #7c3aed; right: -150px; top: 5%; animation-delay: -3s; }
 .blob3 { width: 350px; height: 350px; background: #0891b2; bottom: 5%; left: 35%; animation-delay: -6s; }
 
 @keyframes float {
@@ -464,6 +484,7 @@ header {
 ========================================== */
 section {
     padding: 100px 0;
+    perspective: 1000px; /* Prepares sections for child 3D layers */
 }
 
 .section-title {
@@ -498,30 +519,42 @@ section {
 }
 
 /* ==========================================
-   CARDS & GRIDS REFACTOR
+   3D CARDS & GRIDS REFACTOR
 ========================================== */
 .path-grid, .topic-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 35px;
+    transform-style: preserve-3d;
 }
 
 .path-card, .topic-card {
     background: var(--card);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
     padding: 40px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s;
 }
 
-/* Glassmorphic border illumination glow on hover */
+.card-depth-content {
+    transform-style: preserve-3d;
+    transform: translateZ(0px);
+    transition: transform 0.3s ease;
+}
+
+/* Glassmorphic inner extrusion effect on active hover matrix */
 .path-card:hover, .topic-card:hover {
-    transform: translateY(-8px);
     border-color: var(--border-hover);
     background: var(--card-hover);
     box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.path-card:hover .card-depth-content, 
+.topic-card:hover .card-depth-content {
+    transform: translateZ(40px); /* Pops content out toward the user */
 }
 
 .path-card svg, .topic-card svg {
@@ -530,6 +563,7 @@ section {
     stroke: #60a5fa;
     stroke-width: 1.5;
     margin-bottom: 24px;
+    filter: drop-shadow(0 5px 10px rgba(59, 130, 246, 0.3));
 }
 
 .path-card h3, .topic-card h3 {
@@ -537,6 +571,7 @@ section {
     font-weight: 700;
     margin-bottom: 14px;
     letter-spacing: -0.5px;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
 .path-card p, .topic-card p {
@@ -557,15 +592,15 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: gap 0.2s ease;
+    transition: gap 0.2s ease, transform 0.2s;
 }
 
 .path-card a:hover {
     gap: 10px;
     color: #60a5fa;
+    transform: translateZ(10px);
 }
 
-/* Specific styling adjust for Topic Cards layout symmetry */
 .topic-card {
     padding: 32px;
 }
@@ -589,6 +624,13 @@ section {
     .search-box { margin-left: auto; margin-right: auto; }
     .hero-stats { justify-content: center; }
     
+    .hero-card {
+        transform: none !important; /* Flat mode fallback for tablet touchscreens */
+    }
+    .hero-card:hover {
+        transform: translateY(-10px) !important;
+    }
+
     .path-grid { grid-template-columns: repeat(2, 1fr); }
     .topic-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -632,4 +674,4 @@ section {
     }
     
     .section-title h2 { font-size: 2rem; }
-}  
+}
