@@ -214,7 +214,7 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    .services-container {
+    .services-container {k
         flex-direction: column;
         align-items: center;
     }

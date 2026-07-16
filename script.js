@@ -9,6 +9,11 @@ if (window.lucide) {
     lucide.createIcons();
 }
 
+
+
+
+
+
 // ==========================================
 // 2. MOBILE MENU & INTERACTIVE DRAWER LOGIC
 // ==========================================
@@ -21,6 +26,11 @@ if (hamburger && navLinks) {
         hamburger.classList.toggle("active");
     });
 }
+
+
+
+
+
 
 // ==========================================
 // 3. SMOOTH NAVIGATION SCROLL ENGINE
@@ -46,6 +56,11 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 });
 
+
+
+
+
+
 // ==========================================
 // 4. NAVBAR FLUID SYNC ON SCROLL
 // ==========================================
@@ -62,6 +77,11 @@ window.addEventListener("scroll", () => {
     }
 });
 
+
+
+
+
+
 // ==========================================
 // 5. SCROLL PROGRESS BAR SYSTEM
 // ==========================================
@@ -74,6 +94,11 @@ window.addEventListener("scroll", () => {
     const progress = pageHeight > 0 ? (scrollTop / pageHeight) * 100 : 0;
     progressBar.style.width = progress + "%";
 });
+
+
+
+
+
 
 // ==========================================
 // 6. SCROLL REVEAL VIEWPORT ANIMATION ENGINE
@@ -98,6 +123,12 @@ revealElements.forEach(element => {
     element.style.transition = "opacity .6s ease, transform .6s ease";
     revealObserver.observe(element);
 });
+
+
+
+
+
+
 
 // ==========================================
 // 7. DYNAMIC 3D CARD TILT ENGINE
@@ -141,6 +172,11 @@ tiltCards.forEach(card => {
     });
 });
 
+
+
+
+
+
 // ==========================================
 // 8. ANIMATED STATUS NUMBERS CONTEXT ENGINE
 // ==========================================
@@ -165,6 +201,11 @@ function animateCounter(counter) {
     update();
 }
 
+
+
+
+
+
 const counterObserver = new IntersectionObserver(
     (entries) => {
         entries.forEach(entry => {
@@ -184,28 +225,107 @@ counters.forEach(counter => {
 // 9. LIVE DATA SEARCH ENGINE (GLOBAL MULTI-SUBJECT)
 // ==========================================
 const searchInput = document.querySelector(".search-box input");
+const searchButton = document.querySelector(".search-box button");
+const topicGrid = document.querySelector(".topic-grid");
+const allTopicCards = document.querySelectorAll(".topic-card");
+const sectionLinks = document.querySelectorAll(".nav-links a[href^='#']");
+const sections = document.querySelectorAll("section[id]");
+
+const noResultsMessage = document.createElement("div");
+noResultsMessage.className = "no-results-message";
+noResultsMessage.innerHTML = `<p>No matching topics were found. Try a broader search term.</p>`;
+
+function filterTopics(query) {
+    const normalized = query.toLowerCase().trim();
+    let visibleCount = 0;
+
+    allTopicCards.forEach(card => {
+        const title = card.querySelector("h3").innerText.toLowerCase();
+        const desc = card.querySelector("p").innerText.toLowerCase();
+        const matches = !normalized || title.includes(normalized) || desc.includes(normalized);
+
+        card.style.display = matches ? "block" : "none";
+        if (matches) visibleCount++;
+    });
+
+    if (topicGrid) {
+        if (visibleCount === 0) {
+            if (!topicGrid.contains(noResultsMessage)) {
+                topicGrid.appendChild(noResultsMessage);
+            }
+        } else {
+            if (topicGrid.contains(noResultsMessage)) {
+                topicGrid.removeChild(noResultsMessage);
+            }
+        }
+    }
+}
 
 if (searchInput) {
-    searchInput.addEventListener("keyup", () => {
-        const value = searchInput.value.toLowerCase();
-        
-        // Discovers topic-cards instantly across DSA, Operating Systems, and Network layers
-        const allTopicCards = document.querySelectorAll(".topic-card");
-        
-        allTopicCards.forEach(card => {
-            const title = card.querySelector("h3").innerText.toLowerCase();
-            const desc = card.querySelector("p").innerText.toLowerCase();
-            
-            if (title.includes(value) || desc.includes(value)) {
-                card.style.display = "block";
-                card.style.opacity = "1";
-                card.style.transform = "translateY(0)";
-            } else {
-                card.style.display = "none";
-            }
-        });
+    searchInput.addEventListener("keyup", (event) => {
+        filterTopics(searchInput.value);
+        if (event.key === "Enter") {
+            searchInput.blur();
+        }
     });
 }
+
+if (searchButton) {
+    searchButton.addEventListener("click", () => filterTopics(searchInput ? searchInput.value : ""));
+}
+
+// ==========================================
+// 10. ACTIVE NAVIGATION TRACKER
+// ==========================================
+const sectionObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            const link = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+            if (!link) return;
+
+            if (entry.isIntersecting) {
+                sectionLinks.forEach(item => item.classList.remove("active"));
+                link.classList.add("active");
+            }
+        });
+    },
+    { threshold: 0.45 }
+);
+
+sections.forEach(section => sectionObserver.observe(section));
+
+// ==========================================
+// 11. BACK TO TOP BUTTON
+// ==========================================
+function createBackToTopButton() {
+    const button = document.createElement("button");
+    button.className = "back-to-top";
+    button.type = "button";
+    button.innerText = "↑";
+    button.title = "Back to top";
+
+    button.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.body.appendChild(button);
+    return button;
+}
+
+const backToTopButton = createBackToTopButton();
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 600) {
+        backToTopButton.classList.add("visible");
+    } else {
+        backToTopButton.classList.remove("visible");
+    }
+});
+
+
+
+
+
 
 // ==========================================
 // 10. ACTIVE NAVBAR SUBJECTS TRACKER SYSTEM
@@ -230,6 +350,14 @@ window.addEventListener("scroll", () => {
     });
 });
 
+
+
+
+
+
+
+
+
 // ==========================================
 // 11. MOUSE INTERACTIVE RADIAL BACKFLUID GLOW
 // ==========================================
@@ -243,6 +371,10 @@ glow.style.background = "radial-gradient(circle, rgba(59, 130, 246, 0.12), trans
 glow.style.filter = "blur(15px)";
 glow.style.zIndex = "-1";
 document.body.appendChild(glow);
+
+
+
+
 
 document.addEventListener("mousemove", (e) => {
     glow.style.left = e.clientX - 150 + "px";
