@@ -1,5 +1,5 @@
 /* ==========================================
-   VisionAlgo - script.js
+   VisionAlgo - script.js (Updated Core Engine)
 ========================================== */
 
 // ===============================
@@ -10,7 +10,7 @@ if (window.lucide) {
 }
 
 // ===============================
-// Smooth Scroll
+// Smooth Scroll Navigation
 // ===============================
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener("click", function (e) {
@@ -24,13 +24,14 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         });
 
         if (window.innerWidth <= 768) {
-            document.querySelector(".nav-links").classList.remove("show");
+            const navLinksElement = document.querySelector(".nav-links");
+            if(navLinksElement) navLinksElement.classList.remove("show");
         }
     });
 });
 
 // ===============================
-// Mobile Menu
+// Mobile Menu Toggle
 // ===============================
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
@@ -43,7 +44,7 @@ if (hamburger && navLinks) {
 }
 
 // ===============================
-// Navbar Background on Scroll
+// Navbar Background Fluid Transitions
 // ===============================
 const header = document.querySelector("header");
 
@@ -58,19 +59,20 @@ window.addEventListener("scroll", () => {
 });
 
 // ===============================
-// Scroll Progress Bar
+// Scroll Progress Bar Tracking
 // ===============================
 const progressBar = document.querySelector(".scroll-progress");
 
 window.addEventListener("scroll", () => {
+    if (!progressBar) return;
     const scrollTop = window.scrollY;
     const pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = (scrollTop / pageHeight) * 100;
+    const progress = pageHeight > 0 ? (scrollTop / pageHeight) * 100 : 0;
     progressBar.style.width = progress + "%";
 });
 
 // ===============================
-// Reveal Animation
+// Reveal Viewport Animations
 // ===============================
 const revealElements = document.querySelectorAll(".topic-card, .path-card");
 
@@ -83,7 +85,7 @@ const observer = new IntersectionObserver(
             }
         });
     },
-    { threshold: 0.1 }
+    { threshold: 0.05 }
 );
 
 revealElements.forEach(element => {
@@ -94,13 +96,12 @@ revealElements.forEach(element => {
 });
 
 // ===============================
-// Dynamic 3D Card Tilt Engine (FIXED)
+// Dynamic 3D Card Tilt Engine
 // ===============================
 const tiltCards = document.querySelectorAll(".dynamic-tilt");
 
 tiltCards.forEach(card => {
-    // Find the inner moving child element
-    const innerContent = card.querySelector(".card-depth-content");
+    const innerContent = card.querySelector(".card-depth-content") || card.querySelector("pre");
     if (!innerContent) return;
 
     card.addEventListener("mousemove", (e) => {
@@ -110,20 +111,16 @@ tiltCards.forEach(card => {
         const cardWidth = cardRect.width;
         const cardHeight = cardRect.height;
         
-        // Coordinates accurately measured from the completely stable bounding container
         const mouseX = e.clientX - cardRect.left - cardWidth / 2;
         const mouseY = e.clientY - cardRect.top - cardHeight / 2;
         
-        // Moderate max swing values safely (Max 12 degrees tilt)
         const angleX = -(mouseY / (cardHeight / 2)) * 12;
         const angleY = (mouseX / (cardWidth / 2)) * 12;
         
-        // Tilt the INNER content, keeping the main card shell securely fixed in grid space
         innerContent.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02) translateZ(20px)`;
     });
 
     card.addEventListener("mouseleave", () => {
-        // Smoothly drop back to exact flat balance specifications
         if (innerContent) {
             innerContent.style.transition = "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)";
             innerContent.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateZ(0px)`;
@@ -131,7 +128,6 @@ tiltCards.forEach(card => {
     });
     
     card.addEventListener("mouseenter", () => {
-        // Remove tracking transitions during mousemove for ultra-snappy feedback loops
         if (innerContent) {
             innerContent.style.transition = "transform 0.1s ease-out";
         }
@@ -139,7 +135,7 @@ tiltCards.forEach(card => {
 });
 
 // ===============================
-// Animated Counter
+// Animated Counters Logic
 // ===============================
 const counters = document.querySelectorAll(".hero-stats h2");
 
@@ -148,7 +144,7 @@ function animateCounter(counter) {
     const number = parseInt(text);
     const suffix = text.replace(number, '');
     let current = 0;
-    const increment = number / 80;
+    const increment = number / 60; // Slightly accelerated pace execution
 
     function update() {
         current += increment;
@@ -177,20 +173,26 @@ counters.forEach(counter => {
     counterObserver.observe(counter);
 });
 
-// ===============================
-// Search filter configuration
-// ===============================
+// ===========================================
+// Global Subject Search Engine Configuration
+// ===========================================
 const searchInput = document.querySelector(".search-box input");
-const topicCards = document.querySelectorAll(".topic-card");
 
 if (searchInput) {
     searchInput.addEventListener("keyup", () => {
         const value = searchInput.value.toLowerCase();
-        topicCards.forEach(card => {
+        
+        // Dynamically discovers all card entities across old and newly added sections
+        const allTopicCards = document.querySelectorAll(".topic-card");
+        
+        allTopicCards.forEach(card => {
             const title = card.querySelector("h3").innerText.toLowerCase();
             const desc = card.querySelector("p").innerText.toLowerCase();
+            
             if (title.includes(value) || desc.includes(value)) {
                 card.style.display = "block";
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
             } else {
                 card.style.display = "none";
             }
@@ -198,16 +200,17 @@ if (searchInput) {
     });
 }
 
-// ===============================
-// Active Navbar Context tracker
-// ===============================
-const sections = document.querySelectorAll("section");
+// ===========================================
+// Extended Active Navbar Context Tracker
+// ===========================================
+// Scans standard sections along with new Operating System & Network layers
+const globalSections = document.querySelectorAll("section, .subject-section");
 const navItems = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
     let current = "";
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
+    globalSections.forEach(section => {
+        const sectionTop = section.offsetTop - 180;
         if (window.scrollY >= sectionTop) {
             current = section.getAttribute("id");
         }
@@ -230,7 +233,7 @@ glow.style.width = "300px";
 glow.style.height = "300px";
 glow.style.borderRadius = "50%";
 glow.style.pointerEvents = "none";
-glow.style.background = "radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%)";
+glow.style.background = "radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%)";
 glow.style.filter = "blur(15px)";
 glow.style.zIndex = "-1";
 document.body.appendChild(glow);
@@ -240,7 +243,4 @@ document.addEventListener("mousemove", (e) => {
     glow.style.top = e.clientY - 150 + "px";
 });
 
-// ===============================
-// Console Welcome
-// ===============================
-console.log("%cWelcome to VisionAlgo 🚀", "color:#3B82F6;font-size:20px;font-weight:bold;");
+console.log("%cVisionAlgo Kernel Extension Complete 🚀", "color:#10B981;font-size:14px;font-weight:bold;");
