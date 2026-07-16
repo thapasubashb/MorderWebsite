@@ -1,38 +1,17 @@
 /* ==========================================
-   VisionAlgo - script.js (Updated Core Engine)
+   VisionAlgo - Complete Application Engine
 ========================================== */
 
-// ===============================
-// Initialize Lucide Icons
-// ===============================
+// ==========================================
+// 1. INITIALIZE GLOBAL ICONS (LUCIDE)
+// ==========================================
 if (window.lucide) {
     lucide.createIcons();
 }
 
-// ===============================
-// Smooth Scroll Navigation
-// ===============================
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", function (e) {
-        const target = document.querySelector(this.getAttribute("href"));
-        if (!target) return;
-
-        e.preventDefault();
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-        if (window.innerWidth <= 768) {
-            const navLinksElement = document.querySelector(".nav-links");
-            if(navLinksElement) navLinksElement.classList.remove("show");
-        }
-    });
-});
-
-// ===============================
-// Mobile Menu Toggle
-// ===============================
+// ==========================================
+// 2. MOBILE MENU & INTERACTIVE DRAWER LOGIC
+// ==========================================
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 
@@ -43,12 +22,37 @@ if (hamburger && navLinks) {
     });
 }
 
-// ===============================
-// Navbar Background Fluid Transitions
-// ===============================
+// ==========================================
+// 3. SMOOTH NAVIGATION SCROLL ENGINE
+// ==========================================
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", function (e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (!target) return;
+
+        e.preventDefault();
+        
+        // Retain context by snapping cleanly into place with proper navbar clearance
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        // Close the mobile navigation drawer contextually on mobile clicks
+        if (window.innerWidth <= 768 && navLinks && hamburger) {
+            navLinks.classList.remove("show");
+            hamburger.classList.remove("active");
+        }
+    });
+});
+
+// ==========================================
+// 4. NAVBAR FLUID SYNC ON SCROLL
+// ==========================================
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
+    if (!header) return;
     if (window.scrollY > 40) {
         header.style.background = "rgba(5, 8, 22, 0.95)";
         header.style.boxShadow = "0 15px 40px rgba(0,0,0,.25)";
@@ -58,9 +62,9 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// ===============================
-// Scroll Progress Bar Tracking
-// ===============================
+// ==========================================
+// 5. SCROLL PROGRESS BAR SYSTEM
+// ==========================================
 const progressBar = document.querySelector(".scroll-progress");
 
 window.addEventListener("scroll", () => {
@@ -71,12 +75,12 @@ window.addEventListener("scroll", () => {
     progressBar.style.width = progress + "%";
 });
 
-// ===============================
-// Reveal Viewport Animations
-// ===============================
+// ==========================================
+// 6. SCROLL REVEAL VIEWPORT ANIMATION ENGINE
+// ==========================================
 const revealElements = document.querySelectorAll(".topic-card, .path-card");
 
-const observer = new IntersectionObserver(
+const revealObserver = new IntersectionObserver(
     (entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -92,28 +96,31 @@ revealElements.forEach(element => {
     element.style.opacity = "0";
     element.style.transform = "translateY(40px)";
     element.style.transition = "opacity .6s ease, transform .6s ease";
-    observer.observe(element);
+    revealObserver.observe(element);
 });
 
-// ===============================
-// Dynamic 3D Card Tilt Engine
-// ===============================
+// ==========================================
+// 7. DYNAMIC 3D CARD TILT ENGINE
+// ==========================================
 const tiltCards = document.querySelectorAll(".dynamic-tilt");
 
 tiltCards.forEach(card => {
+    // Dynamically captures internal visual depth objects (or terminal containers)
     const innerContent = card.querySelector(".card-depth-content") || card.querySelector("pre");
     if (!innerContent) return;
 
     card.addEventListener("mousemove", (e) => {
-        if (window.innerWidth <= 1024) return;
+        if (window.innerWidth <= 1024) return; // Disables calculation load on mobile touch displays
 
         const cardRect = card.getBoundingClientRect();
         const cardWidth = cardRect.width;
         const cardHeight = cardRect.height;
         
+        // Exact spatial center mapping vectors
         const mouseX = e.clientX - cardRect.left - cardWidth / 2;
         const mouseY = e.clientY - cardRect.top - cardHeight / 2;
         
+        // Moderate safe swing limits (Max 12 degrees rotation)
         const angleX = -(mouseY / (cardHeight / 2)) * 12;
         const angleY = (mouseX / (cardWidth / 2)) * 12;
         
@@ -134,9 +141,9 @@ tiltCards.forEach(card => {
     });
 });
 
-// ===============================
-// Animated Counters Logic
-// ===============================
+// ==========================================
+// 8. ANIMATED STATUS NUMBERS CONTEXT ENGINE
+// ==========================================
 const counters = document.querySelectorAll(".hero-stats h2");
 
 function animateCounter(counter) {
@@ -144,7 +151,7 @@ function animateCounter(counter) {
     const number = parseInt(text);
     const suffix = text.replace(number, '');
     let current = 0;
-    const increment = number / 60; // Slightly accelerated pace execution
+    const increment = number / 60; // Fluid update curve pacing
 
     function update() {
         current += increment;
@@ -173,16 +180,16 @@ counters.forEach(counter => {
     counterObserver.observe(counter);
 });
 
-// ===========================================
-// Global Subject Search Engine Configuration
-// ===========================================
+// ==========================================
+// 9. LIVE DATA SEARCH ENGINE (GLOBAL MULTI-SUBJECT)
+// ==========================================
 const searchInput = document.querySelector(".search-box input");
 
 if (searchInput) {
     searchInput.addEventListener("keyup", () => {
         const value = searchInput.value.toLowerCase();
         
-        // Dynamically discovers all card entities across old and newly added sections
+        // Discovers topic-cards instantly across DSA, Operating Systems, and Network layers
         const allTopicCards = document.querySelectorAll(".topic-card");
         
         allTopicCards.forEach(card => {
@@ -200,11 +207,10 @@ if (searchInput) {
     });
 }
 
-// ===========================================
-// Extended Active Navbar Context Tracker
-// ===========================================
-// Scans standard sections along with new Operating System & Network layers
-const globalSections = document.querySelectorAll("section, .subject-section");
+// ==========================================
+// 10. ACTIVE NAVBAR SUBJECTS TRACKER SYSTEM
+// ==========================================
+const globalSections = document.querySelectorAll("section, #topics, #os-topics, #cn-topics");
 const navItems = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
@@ -224,9 +230,9 @@ window.addEventListener("scroll", () => {
     });
 });
 
-// ===============================
-// Mouse Interactive Radial Aura Glow
-// ===============================
+// ==========================================
+// 11. MOUSE INTERACTIVE RADIAL BACKFLUID GLOW
+// ==========================================
 const glow = document.createElement("div");
 glow.style.position = "fixed";
 glow.style.width = "300px";
@@ -243,4 +249,4 @@ document.addEventListener("mousemove", (e) => {
     glow.style.top = e.clientY - 150 + "px";
 });
 
-console.log("%cVisionAlgo Kernel Extension Complete 🚀", "color:#10B981;font-size:14px;font-weight:bold;");
+console.log("%cVisionAlgo Kernel System Boot Complete 🚀", "color:#3B82F6;font-size:14px;font-weight:bold;");
