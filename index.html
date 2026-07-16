@@ -21,11 +21,12 @@
 
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="scroll-progress" id="progress-bar"></div>
 
   <header>
     <div class="container">
-      <nav class="navbar">
+      <nav class="navbar" aria-label="Primary navigation">
         <div class="logo">
           <div class="logo-circle">V</div>
           <span>VisionAlgo</span>
@@ -37,8 +38,8 @@
           <li><a href="#os-topics">Operating Systems</a></li>
           <li><a href="#cn-topics">Computer Networks</a></li>
         </ul>
-        <button class="nav-btn">Start Learning</button>
-        <div class="hamburger">
+        <button type="button" class="nav-btn">Start Learning</button>
+        <div class="hamburger" aria-label="Open mobile menu" role="button" tabindex="0">
           <span></span>
           <span></span>
           <span></span>
@@ -47,54 +48,57 @@
     </div>
   </header>
 
-  <section class="hero" id="home">
-    <div class="hero-bg">
-      <div class="blob blob1"></div>
-      <div class="blob blob2"></div>
-      <div class="blob blob3"></div>
-    </div>
-    <div class="container hero-container">
-      <div class="hero-left">
-        <span class="badge">🚀 Interactive Learning Platform</span>
-        <h1>Master <span>CS Core</span>: DSA, OS & Computer Networks</h1>
-        <p>Learn computer science concepts through stunning visualizations, structured roadmaps, interview guides, and
-          interactive explanations.</p>
+  <main id="main-content">
 
-        <div class="hero-buttons">
-          <a href="#roadmaps" class="primary-btn">Explore Journey</a>
-          <a href="#topics" class="secondary-btn">Browse All Core</a>
-        </div>
-
-        <div class="search-box">
-          <input type="text" placeholder="Search Arrays, Graph, TCP, Deadlock...">
-          <button>Search</button>
-        </div>
-
-        <div class="hero-stats">
-          <div>
-            <h2>450+</h2>
-            <span>Topics Covered</span>
-          </div>
-          <div>
-            <h2>120+</h2>
-            <span>Visualizations</span>
-          </div>
-          <div>
-            <h2>100%</h2>
-            <span>Free Access</span>
-          </div>
-        </div>
+    <section class="hero" id="home">
+      <div class="hero-bg">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
       </div>
+      <div class="container hero-container">
+        <div class="hero-left">
+          <span class="badge">🚀 Interactive Learning Platform</span>
+          <h1>Master <span>CS Core</span>: DSA, OS & Computer Networks</h1>
+          <p>Learn computer science concepts through stunning visualizations, structured roadmaps, interview guides, and
+            interactive explanations.</p>
 
-      <div class="hero-right">
-        <div class="hero-3d-scene">
-          <div class="hero-card dynamic-tilt" data-tilt>
-            <div class="terminal-header">
-              <span></span>
-              <span></span>
-              <span></span>
+          <div class="hero-buttons">
+            <a href="#roadmaps" class="primary-btn">Explore Journey</a>
+            <a href="#topics" class="secondary-btn">Browse All Core</a>
+          </div>
+
+          <div class="search-box">
+            <label class="visually-hidden" for="topic-search">Search topics</label>
+            <input id="topic-search" type="text" placeholder="Search Arrays, Graph, TCP, Deadlock...">
+            <button type="button" aria-label="Search topics">Search</button>
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <h2>450+</h2>
+              <span>Topics Covered</span>
             </div>
-            <pre><code>VisionAlgo Terminal v1.0.4
+            <div>
+              <h2>120+</h2>
+              <span>Visualizations</span>
+            </div>
+            <div>
+              <h2>100%</h2>
+              <span>Free Access</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-3d-scene">
+            <div class="hero-card dynamic-tilt" data-tilt>
+              <div class="terminal-header">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <pre><code>VisionAlgo Terminal v1.0.4
 > Ingesting System Architecture
 > Tracking Engine State...
 
@@ -104,238 +108,252 @@
 • Protocol Stack(CN): Connected
 
 Ready to visualize.</code></pre>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="learning-paths" id="roadmaps">
-    <div class="container">
-      <div class="section-title">
-        <span>Learning Paths</span>
-        <h2>Choose Your Journey</h2>
-        <p>Learn step by step from fundamental configurations up to algorithmic mastery.</p>
-      </div>
+    <section class="learning-paths" id="roadmaps">
+      <div class="container">
+        <div class="section-title">
+          <span>Learning Paths</span>
+          <h2>Choose Your Journey</h2>
+          <p>Learn step by step from fundamental configurations up to algorithmic mastery.</p>
+        </div>
 
-      <div class="path-grid">
-        <div class="path-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="code-2"></i>
-            <h3>Data Structures</h3>
-            <p>• Arrays & Linked Lists<br>
-              • Stacks & Queues<br>
-              • Non-Linear Trees<br>
-              • Graph Algorithms<br>
-              • Heap Architectures
-            </p>
-            <a href="#topics">Jump to DSA <span>→</span></a>
+        <div class="path-grid">
+          <div class="path-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="code-2"></i>
+              <h3>Data Structures</h3>
+              <p>• Arrays & Linked Lists<br>
+                • Stacks & Queues<br>
+                • Non-Linear Trees<br>
+                • Graph Algorithms<br>
+                • Heap Architectures
+              </p>
+              <a href="#topics">Jump to DSA <span>→</span></a>
+            </div>
           </div>
-        </div>
-        <div class="path-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="cpu"></i>
-            <h3>Operating Systems</h3>
-            <p>• Concurrency & Processes<br>
-              • CPU Scheduling Metrics<br>
-              • Deadlock Avoidance<br>
-              • Memory Management<br>
-              • Virtual Paging Schemes
-            </p>
-            <a href="#os-topics">Jump to OS <span>→</span></a>
+          <div class="path-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="cpu"></i>
+              <h3>Operating Systems</h3>
+              <p>• Concurrency & Processes<br>
+                • CPU Scheduling Metrics<br>
+                • Deadlock Avoidance<br>
+                • Memory Management<br>
+                • Virtual Paging Schemes
+              </p>
+              <a href="#os-topics">Jump to OS <span>→</span></a>
+            </div>
           </div>
-        </div>
-        <div class="path-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="network"></i>
-            <h3>Computer Networks</h3>
-            <p>• OSI Layer Frameworks<br>
-              • TCP/IP Protocol Suite<br>
-              • Routing Mechanisms<br>
-              • Application Protocols<br>
-              • DNS Resolution Systems
-            </p>
-            <a href="#cn-topics">Jump to CN <span>→</span></a>
+          <div class="path-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="network"></i>
+              <h3>Computer Networks</h3>
+              <p>• OSI Layer Frameworks<br>
+                • TCP/IP Protocol Suite<br>
+                • Routing Mechanisms<br>
+                • Application Protocols<br>
+                • DNS Resolution Systems
+              </p>
+              <a href="#cn-topics">Jump to CN <span>→</span></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECTION 1: DATA STRUCTURES & ALGORITHMS -->
-  <section id="topics" class="subject-section">
-    <div class="container">
-      <div class="section-title">
-        <span>Featured Content</span>
-        <h2>Data Structures & Algorithms</h2>
-      </div>
+    <!-- SECTION 1: DATA STRUCTURES & ALGORITHMS -->
+    <section id="topics" class="subject-section">
+      <div class="container">
+        <div class="section-title">
+          <span>Featured Content</span>
+          <h2>Data Structures & Algorithms</h2>
+        </div>
 
-      <div class="topic-grid">
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="database"></i>
-            <h3>Arrays</h3>
-            <p>Master searching, multi-pointer sorting algorithms, and efficient prefix sum ranges.</p>
+        <div class="topic-grid">
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="database"></i>
+              <h3>Arrays</h3>
+              <p>Master searching, multi-pointer sorting algorithms, and efficient prefix sum ranges.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="link"></i>
-            <h3>Linked List</h3>
-            <p>Traverse structural variations including Singly, Doubly, and Circular linked lists.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="link"></i>
+              <h3>Linked List</h3>
+              <p>Traverse structural variations including Singly, Doubly, and Circular linked lists.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="layers"></i>
-            <h3>Stack</h3>
-            <p>Isolate structural functional tracking, monotonic limits, and expression parser tools.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="layers"></i>
+              <h3>Stack</h3>
+              <p>Isolate structural functional tracking, monotonic limits, and expression parser tools.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="workflow"></i>
-            <h3>Queue</h3>
-            <p>Configure FIFO sequences using basic arrays, Circular buffers, and Double-Ended Deques.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="workflow"></i>
+              <h3>Queue</h3>
+              <p>Configure FIFO sequences using basic arrays, Circular buffers, and Double-Ended Deques.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="git-branch"></i>
-            <h3>Trees</h3>
-            <p>Visualize fundamental Binary Trees, Search Trees (BST), AVL self-balancing and Traversals.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="git-branch"></i>
+              <h3>Trees</h3>
+              <p>Visualize fundamental Binary Trees, Search Trees (BST), AVL self-balancing and Traversals.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="share-2"></i>
-            <h3>Graphs</h3>
-            <p>Explore search configurations spanning BFS, DFS, MST variations, and Shortest Paths.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="share-2"></i>
+              <h3>Graphs</h3>
+              <p>Explore search configurations spanning BFS, DFS, MST variations, and Shortest Paths.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECTION 2: OPERATING SYSTEMS -->
-  <section id="os-topics" class="subject-section">
-    <div class="container">
-      <div class="section-title">
-        <span>Featured Content</span>
-        <h2>Operating Systems Architecture</h2>
-      </div>
+    <!-- SECTION 2: OPERATING SYSTEMS -->
+    <section id="os-topics" class="subject-section">
+      <div class="container">
+        <div class="section-title">
+          <span>Featured Content</span>
+          <h2>Operating Systems Architecture</h2>
+        </div>
 
-      <div class="topic-grid">
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="component"></i>
-            <h3>Process Scheduling</h3>
-            <p>Analyze performance metrics across Preemptive and Non-Preemptive schedulers like FCFS, Round Robin, and
-              SRTF.</p>
+        <div class="topic-grid">
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="component"></i>
+              <h3>Process Scheduling</h3>
+              <p>Analyze performance metrics across Preemptive and Non-Preemptive schedulers like FCFS, Round Robin, and
+                SRTF.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="shield-alert"></i>
-            <h3>Deadlocks</h3>
-            <p>Study Mutual Exclusion conditions, Wait-For Graphs, and preventive strategies using the Banker's
-              Algorithm.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="shield-alert"></i>
+              <h3>Deadlocks</h3>
+              <p>Study Mutual Exclusion conditions, Wait-For Graphs, and preventive strategies using the Banker's
+                Algorithm.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="binary"></i>
-            <h3>Memory Allocation</h3>
-            <p>Examine dynamic storage challenges, internal/external fragmentation, and placement metrics like First-Fit
-              and Best-Fit.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="binary"></i>
+              <h3>Memory Allocation</h3>
+              <p>Examine dynamic storage challenges, internal/external fragmentation, and placement metrics like
+                First-Fit
+                and Best-Fit.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="copy"></i>
-            <h3>Virtual Paging</h3>
-            <p>Understand Translation Lookaside Buffers (TLB), page faults, and cache eviction logic like LRU, FIFO, and
-              Optimal Page Replacement.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="copy"></i>
+              <h3>Virtual Paging</h3>
+              <p>Understand Translation Lookaside Buffers (TLB), page faults, and cache eviction logic like LRU, FIFO,
+                and
+                Optimal Page Replacement.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="refresh-cw"></i>
-            <h3>Synchronization</h3>
-            <p>Solve classical concurrency bugs using Semaphores, Mutex locks, Monitors, and structural Critical Section
-              rules.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="refresh-cw"></i>
+              <h3>Synchronization</h3>
+              <p>Solve classical concurrency bugs using Semaphores, Mutex locks, Monitors, and structural Critical
+                Section
+                rules.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="hard-drive"></i>
-            <h3>Disk Management</h3>
-            <p>Optimize I/O seek times using disk-arm track movement algorithms like SSTF, SCAN, C-SCAN, and LOOK.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="hard-drive"></i>
+              <h3>Disk Management</h3>
+              <p>Optimize I/O seek times using disk-arm track movement algorithms like SSTF, SCAN, C-SCAN, and LOOK.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECTION 3: COMPUTER NETWORKS -->
-  <section id="cn-topics" class="subject-section">
-    <div class="container">
-      <div class="section-title">
-        <span>Featured Content</span>
-        <h2>Computer Networks & Protocols</h2>
-      </div>
+    <!-- SECTION 3: COMPUTER NETWORKS -->
+    <section id="cn-topics" class="subject-section">
+      <div class="container">
+        <div class="section-title">
+          <span>Featured Content</span>
+          <h2>Computer Networks & Protocols</h2>
+        </div>
 
-      <div class="topic-grid">
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="layers-3"></i>
-            <h3>OSI & TCP/IP Reference Models</h3>
-            <p>Track abstraction boundaries across the 7-layer stack, packet encapsulation mechanics, and protocol
-              headers.</p>
+        <div class="topic-grid">
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="layers-3"></i>
+              <h3>OSI & TCP/IP Reference Models</h3>
+              <p>Track abstraction boundaries across the 7-layer stack, packet encapsulation mechanics, and protocol
+                headers.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="arrow-left-right"></i>
-            <h3>TCP Transport Controls</h3>
-            <p>Deconstruct the 3-Way Handshake, Flow Control windows, and advanced Congestion Control mechanics (AIMD,
-              Slow Start).</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="arrow-left-right"></i>
+              <h3>TCP Transport Controls</h3>
+              <p>Deconstruct the 3-Way Handshake, Flow Control windows, and advanced Congestion Control mechanics (AIMD,
+                Slow Start).</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="milestone"></i>
-            <h3>IP Addressing & Subnetting</h3>
-            <p>Calculate dynamic Network Masks, CIDR block allocations, Variable Length Subnet Masks (VLSM), and
-              IPv4/IPv6 headers.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="milestone"></i>
+              <h3>IP Addressing & Subnetting</h3>
+              <p>Calculate dynamic Network Masks, CIDR block allocations, Variable Length Subnet Masks (VLSM), and
+                IPv4/IPv6 headers.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="shuffle"></i>
-            <h3>Routing Protocols</h3>
-            <p>Compare interior and exterior route tracking strategies using Distance-Vector (RIP) vs Link-State (OSPF,
-              BGP) systems.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="shuffle"></i>
+              <h3>Routing Protocols</h3>
+              <p>Compare interior and exterior route tracking strategies using Distance-Vector (RIP) vs Link-State
+                (OSPF,
+                BGP) systems.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="globe"></i>
-            <h3>DNS & Application Layer</h3>
-            <p>Trace recursive queries, HTTP/3 connection protocols, SSL/TLS handshakes, and caching parameters.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="globe"></i>
+              <h3>DNS & Application Layer</h3>
+              <p>Trace recursive queries, HTTP/3 connection protocols, SSL/TLS handshakes, and caching parameters.</p>
+            </div>
           </div>
-        </div>
-        <div class="topic-card dynamic-tilt" data-tilt>
-          <div class="card-depth-content">
-            <i data-lucide="lock"></i>
-            <h3>Network Security Architecture</h3>
-            <p>Analyze operational boundaries of Symmetric/Asymmetric cryptosystems, Firewalls, NAT traversal, and IPSec
-              configurations.</p>
+          <div class="topic-card dynamic-tilt" data-tilt>
+            <div class="card-depth-content">
+              <i data-lucide="lock"></i>
+              <h3>Network Security Architecture</h3>
+              <p>Analyze operational boundaries of Symmetric/Asymmetric cryptosystems, Firewalls, NAT traversal, and
+                IPSec
+                configurations.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>VisionAlgo © 2026 — Crafted for CS learners focusing on DSA, Operating Systems, and Computer Networks.</p>
+        <p>Accessible, responsive, and designed to help you build confidence for interviews and projects.</p>
+      </div>
+    </footer>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
