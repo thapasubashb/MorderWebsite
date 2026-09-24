@@ -508,6 +508,68 @@ section { padding: 100px 0; perspective: 1000px; }
 .card-depth-content { padding: 40px; transform-style: preserve-3d; transition: transform 0.15s ease-out; }
 .topic-card .card-depth-content { padding: 32px; }
 
+#topics {
+    background: #091923;
+    border-bottom: 1px solid rgba(149, 224, 190, 0.08);
+}
+#topics .section-title { margin-bottom: 48px; }
+#topics .section-title span {
+    color: #95e0be;
+    background: rgba(149, 224, 190, 0.09);
+}
+#topics .section-title h2 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+#topics .topic-card {
+    position: relative;
+    min-height: 275px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(12, 31, 40, 0.88);
+}
+#topics .topic-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #95e0be;
+}
+#topics .topic-card:nth-child(2)::before,
+#topics .topic-card:nth-child(5)::before { background: #76c8dc; }
+#topics .topic-card:nth-child(3)::before,
+#topics .topic-card:nth-child(6)::before { background: #f2c879; }
+#topics .topic-card .card-depth-content {
+    min-height: 275px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px 28px 28px 32px;
+}
+.topic-number {
+    align-self: flex-end;
+    color: #71958f;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+#topics .topic-card i {
+    margin: 20px 0 18px;
+    color: #95e0be;
+    background: rgba(149, 224, 190, 0.1);
+}
+#topics .topic-card:nth-child(2) i,
+#topics .topic-card:nth-child(5) i { color: #76c8dc; background: rgba(118, 200, 220, 0.1); }
+#topics .topic-card:nth-child(3) i,
+#topics .topic-card:nth-child(6) i { color: #f2c879; background: rgba(242, 200, 121, 0.1); }
+#topics .topic-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+}
+#topics .topic-card p { line-height: 1.65; }
+
 .topic-card i {
     width: 48px; height: 48px;
     margin-bottom: 20px;
