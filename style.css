@@ -409,6 +409,18 @@ section { padding: 100px 0; perspective: 1000px; }
     gap: 35px;
 }
 
+.learning-paths {
+    background: #07131b;
+    border-top: 1px solid rgba(149, 224, 190, 0.08);
+    border-bottom: 1px solid rgba(149, 224, 190, 0.08);
+}
+.learning-paths .section-title { margin-bottom: 48px; }
+.learning-paths .section-title span {
+    color: #a6e7c8;
+    background: rgba(149, 224, 190, 0.08);
+}
+.learning-paths .section-title h2 { font-family: 'Space Grotesk', sans-serif; }
+
 .path-card, .topic-card {
     background: var(--card);
     backdrop-filter: blur(12px);
@@ -418,6 +430,75 @@ section { padding: 100px 0; perspective: 1000px; }
     perspective: 1000px;
     transition: all 0.3s ease;
 }
+.path-card {
+    position: relative;
+    min-height: 365px;
+    overflow: hidden;
+    background: rgba(10, 27, 35, 0.86);
+    border-radius: 12px;
+}
+.path-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: #95e0be;
+}
+.path-card:nth-child(2)::before { background: #f2c879; }
+.path-card:nth-child(3)::before { background: #76c8dc; }
+.path-card .card-depth-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+}
+.path-index {
+    align-self: flex-end;
+    color: #7da89e;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.path-card i {
+    width: 52px;
+    height: 52px;
+    margin: 30px 0 24px;
+    padding: 14px;
+    border-radius: 10px;
+    color: #95e0be;
+    background: rgba(149, 224, 190, 0.1);
+}
+.path-card:nth-child(2) i { color: #f2c879; background: rgba(242, 200, 121, 0.1); }
+.path-card:nth-child(3) i { color: #76c8dc; background: rgba(118, 200, 220, 0.1); }
+.path-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.45rem;
+    margin-bottom: 14px;
+}
+.path-card p {
+    flex: 1;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.9;
+}
+.path-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    color: #a6e7c8;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.path-card:nth-child(2) a { color: #f2c879; }
+.path-card:nth-child(3) a { color: #76c8dc; }
+.path-card a span {
+    font-size: 1.2rem;
+    transition: transform 0.25s ease;
+}
+.path-card:hover a span { transform: translateX(5px); }
 .path-card:hover, .topic-card:hover {
     border-color: var(--border-hover);
     background: var(--card-hover);
